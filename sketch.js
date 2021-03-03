@@ -30,15 +30,13 @@ function preload() {
 }
 // Setup code goes here
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(1920, 1080);
 
-
-  imageMode(CENTER);
   textAlign(CENTER);
   textSize(50);
   textFont(font);
 
-  drawFuntion = drawSplash
+  drawFunction = drawSplash
  }
 
 
@@ -52,67 +50,67 @@ function draw() {
 //drawfunctions
 
 drawSplash = function(){
-    image(images[6],width/2, height/2);
+	background(247, 236, 220);
+    image(images[6],width/2, height/2, 1920, 1080);
 }
 
 
 drawentrance = function() {
     background(252, 244, 234);
-    image(images[0],width/2, height/2);
+    image(images[0],0, 0);
    
 
     fill(112, 112, 112);
     text("Entran", width/2, height - gTextOffset);
-    text("Press L to Livingroom", width/2, height - gTextOffset);
+    text("Press L to Livingroom", width/2, height );
 }
 
 drawlivingroom = function() {
    background(252,223,186);
-   image(images[1],width/2, height/2);
+   image(images[1],0, 0);
    
 
    fill(112, 112, 112);
-   text("Sleepy", width/2, height - gTextOffset);
+   text("Sleepy", width/2, height);
 }
 
 drawkitchen = function() {
    background(255,247,236);
-   image(images[2],width/2, height/2);
+   image(images[2],0, 0);
    
 
    fill(112, 112, 112);
-   text("Calm", width/2, height - gTextOffset);
+   text("Calm", width/2, height);
 }
 
 drawbedroom = function() {
    background(193,201,177);
-   image(images[3],width/2, height/2);
+   image(images[3],0, 0);
  
 
    fill(112, 112, 112);
-   text("Craving", width/2, height - gTextOffset);
-}
+   text("Craving", width/2, height);
 
 drawbathroom = function() {
    background(236,245,250);
-   image(images[4],width/2, height/2);
+   image(images[4],0, 0);
    
 
    fill(112, 112, 112);
-   text("Happy", width/2, height - gTextOffset);
+   text("Happy", width/2, height);
 }
 
 drawmovieroom = function() {
    background(197, 197, 197 );
-   image(images[5],width/2, height/2);
+   image(images[5],0, 0);
    
 
    fill(112, 112, 112);
-   text("Happy", width/2, height - gTextOffset);
+   text("Happy", width/2, height);
 }
 
 drawInstruction = function() {
-   background(#EBEBEB);
+   background(255,255,255);
 
    loadArray();
 }
@@ -147,6 +145,9 @@ function keyTyped() {
 		if( key === 'l' ) {
 			drawFunction = drawlivingroom;
 		}
+		else if( key === 'i' ) {
+			drawFunction = drawInstruction;
+		}
 	}
 
 	if ( drawFunction === drawlivingroom ) {
@@ -156,6 +157,9 @@ function keyTyped() {
 		else if( key === 'k' ) {
 			drawFunction = drawkitchen;
 		}
+		else if( key === 'i' ) {
+			drawFunction = drawInstruction;
+		}
 	}
 
 	if ( drawFunction === drawkitchen ) {
@@ -164,6 +168,9 @@ function keyTyped() {
 		}
 		else if( key === 'l' ) {
 			drawFunction = drawlivingroom;
+		}
+		else if( key === 'i' ) {
+			drawFunction = drawInstruction;
 		}
 	}
 
@@ -176,6 +183,9 @@ function keyTyped() {
 		}
 		else if( key === 'k' ) {
 			drawFunction = drawkitchen;
+		}
+		else if( key === 'i' ) {
+			drawFunction = drawInstruction;
 		}
 	}
 }
@@ -191,5 +201,5 @@ function loadArray() {
   fill(112, 112, 112);
   for( let i = 0 ; i < strings.length; i++ ) {
     text( strings[i], width/2, height/2);
-  }
+   }
 }
