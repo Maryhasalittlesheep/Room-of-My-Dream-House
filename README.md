@@ -1,12 +1,11 @@
-## Empty Example for P5.js
-#### by Scott Kildall
+## Room of My Dream House
+#### by Mary Huang
 
 
 
 ### Overview
-This is a modified version of the p5.js Empty Example that simplifies the directory structure
+This is a room tour of my dream house website page with arrays intructions made in p5.js
 
 
 ### Technical Details
-
-Modify the sketch.js setup() and draw() functions and begin adding functions!
+Adobe XD for Interaction Map and P5.js for the sketch with coding

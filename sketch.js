@@ -1,8 +1,8 @@
 /***********************************************************************************
-	Room of Your House  
+	Room of My Dream House
 	by Mary Huang
 
-    Overview - This is a template for a simple state machine that goes between five states
+    Overview - This is a room tour of my dream house website page with arrays intructions
  
     ---------------------------------------------------------------------
 ***********************************************************************************/
@@ -10,11 +10,15 @@
 // Array of images
 var images = [];
 
-var istructions = [];
-
 var drawFunction;
 
+var gTextOffset = 500;
 
+var gRoomTextOffset = 440;
+
+var strings = [];
+
+var instructionStrings;
 
 //load all images into an array
 function preload() {
@@ -32,9 +36,12 @@ function preload() {
 function setup() {
   createCanvas(1920, 1080);
 
+  rectMode(CENTER);
   textAlign(CENTER);
   textSize(50);
   textFont(font);
+  noStroke();
+  instructionStrings()
 
   drawFunction = drawSplash
  }
@@ -45,13 +52,14 @@ function draw() {
 	background(0);
 
 	drawFunction();
+	print(mouseX,mouseY);
 }
 
 //drawfunctions
 
 drawSplash = function(){
 	background(247, 236, 220);
-    image(images[6],width/2, height/2, 1920, 1080);
+    image(images[6],0 ,0 , 1920, 1080);
 }
 
 
@@ -59,60 +67,95 @@ drawentrance = function() {
     background(252, 244, 234);
     image(images[0],0, 0);
    
+    fill(165, 133, 91);
+    rect(855 , 1022, 80, 50, 30, 30, 30, 30);
 
     fill(112, 112, 112);
-    text("Entran", width/2, height - gTextOffset);
-    text("Press L to Livingroom", width/2, height );
+    text("Entrance", width/2, height/2 + gRoomTextOffset);
+    text(strings[1], width/2, height/2 + gTextOffset);
 }
 
 drawlivingroom = function() {
    background(252,223,186);
    image(images[1],0, 0);
    
+   fill(214, 182, 139);
+   rect(375, 1022, 80, 50, 30, 30, 30, 30);
+
+   fill(238, 159, 56);
+   rect(1400, 1022, 80, 50, 30, 30, 30, 30);
 
    fill(112, 112, 112);
-   text("Sleepy", width/2, height);
+   text("Livingroom", width/2, height/2 + gRoomTextOffset);
+   text(strings[0], width/2 - gTextOffset, height/2 + gTextOffset);
+   text(strings[2], width/2 + gTextOffset, height/2 + gTextOffset);   
 }
 
 drawkitchen = function() {
    background(255,247,236);
    image(images[2],0, 0);
-   
+
+   fill(214, 182, 139);
+   rect(355, 1022, 80, 50, 30, 30, 30, 30);
+
+   fill(165, 133, 91);
+   rect(1385, 1022, 80, 50, 30, 30, 30, 30);   
 
    fill(112, 112, 112);
-   text("Calm", width/2, height);
+   text("Kitchen", width/2, height/2 + gRoomTextOffset);
+   text(strings[1], width/2 - gTextOffset, height/2 + gTextOffset);
+   text(strings[3], width/2 + gTextOffset, height/2 + gTextOffset);
 }
 
 drawbedroom = function() {
    background(193,201,177);
    image(images[3],0, 0);
  
+   fill(135, 160, 180);
+   rect(371, 1022, 80, 50, 30, 30, 30, 30);
+
+   fill(169, 169, 169);
+   rect(1358, 1022, 80, 50, 30, 30, 30, 30);   
 
    fill(112, 112, 112);
-   text("Craving", width/2, height);
+   text("Bedroom", width/2, height/2 + gRoomTextOffset);
+   text(strings[4], width/2 - gTextOffset, height/2 + gTextOffset);
+   text(strings[5], width/2 + gTextOffset, height/2 + gTextOffset);
+}
 
 drawbathroom = function() {
    background(236,245,250);
    image(images[4],0, 0);
    
+   fill(116, 151, 119);
+   rect(886, 1022, 80, 50, 30, 30, 30, 30);   
 
    fill(112, 112, 112);
-   text("Happy", width/2, height);
+   text("Bathroom", width/2, height/2 + gRoomTextOffset);
+   text(strings[3], width/2, height/2 + gTextOffset);
 }
 
 drawmovieroom = function() {
    background(197, 197, 197 );
    image(images[5],0, 0);
    
+   fill(116, 151, 119);
+   rect(884, 1022, 80, 50, 30, 30, 30, 30);   
 
    fill(112, 112, 112);
-   text("Happy", width/2, height);
+   text("Movieroom", width/2, height/2 + gRoomTextOffset);
+   text(strings[3], width/2, height/2 + gTextOffset);
 }
 
-drawInstruction = function() {
-   background(255,255,255);
 
-   loadArray();
+function instructionStrings() {
+	strings[0] = "Press   E   to Entrance";
+	strings[1] = "Press   L   to livingroom";
+	strings[2] = "Press   K   to Kitchen";
+	strings[3] = "Press   B   to Bedroom";
+    strings[4] = "Press   R   to Bathroom";
+    strings[5] = "Press   M   to Movieroom";
+
 }
 
 
@@ -136,8 +179,8 @@ function keyTyped() {
 		else if( key === 'm' ) {
 			drawFunction = drawmovieroom;
 		}
-		else if( key === 'i' ) {
-			drawFunction = drawInstruction;
+		else if( key === 's' ) {
+			drawFunction = drawSplash;
 		}
 	}
 	
@@ -145,8 +188,8 @@ function keyTyped() {
 		if( key === 'l' ) {
 			drawFunction = drawlivingroom;
 		}
-		else if( key === 'i' ) {
-			drawFunction = drawInstruction;
+		else if( key === 's' ) {
+			drawFunction = drawSplash;
 		}
 	}
 
@@ -157,8 +200,8 @@ function keyTyped() {
 		else if( key === 'k' ) {
 			drawFunction = drawkitchen;
 		}
-		else if( key === 'i' ) {
-			drawFunction = drawInstruction;
+		else if( key === 's' ) {
+			drawFunction = drawSplash;
 		}
 	}
 
@@ -169,8 +212,8 @@ function keyTyped() {
 		else if( key === 'l' ) {
 			drawFunction = drawlivingroom;
 		}
-		else if( key === 'i' ) {
-			drawFunction = drawInstruction;
+		else if( key === 's' ) {
+			drawFunction = drawSplash;
 		}
 	}
 
@@ -184,22 +227,28 @@ function keyTyped() {
 		else if( key === 'k' ) {
 			drawFunction = drawkitchen;
 		}
-		else if( key === 'i' ) {
-			drawFunction = drawInstruction;
+		else if( key === 's' ) {
+			drawFunction = drawSplash;
 		}
 	}
+
+	if ( drawFunction === drawmovieroom ) {
+		if( key === 'b' ) {
+			drawFunction = drawbedroom;
+		}
+		else if( key === 's' ) {
+			drawFunction = drawSplash;
+		}
+	}
+
+	if ( drawFunction === drawbathroom ) {
+		if( key === 'b' ) {
+			drawFunction = drawbedroom;
+		}
+		else if( key === 's' ) {
+			drawFunction = drawSplash;
+		}
+	}
+
 }
 
-function loadArray() {
-  strings[0] = "Press E to Entrance";
-  strings[1] = "Press L to livingroom";
-  strings[2] = "Press K to Kitchen";
-  strings[3] = "Press B to Bedroom";
-  strings[4] = "Press R to Bathroom";
-  strings[5] = "Press M to Movieroom";
-
-  fill(112, 112, 112);
-  for( let i = 0 ; i < strings.length; i++ ) {
-    text( strings[i], width/2, height/2);
-   }
-}
